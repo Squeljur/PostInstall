@@ -200,9 +200,6 @@ if (Test-Path "$ProgramX86\Microsoft\Edge\Application")
     Write-Host "Microsoft Edge's" -NoNewline -ForegroundColor Cyan
     Write-Host " files!"
 
-    Get-ChildItem -Path "$ProgramX86\Microsoft\Edge" -Force | ForEach-Object{
-        Remove-Item -Path $_.FullName -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
-    }
     Get-ChildItem -Path "$ProgramX86\Microsoft\EdgeUpdate" -Force | ForEach-Object{
         Remove-Item -Path $_.FullName -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
     }
