@@ -1,4 +1,4 @@
-Write-Host "Squeljurs WindowsPostinstall v0.17" -ForegroundColor yellow
+Write-Host "Squeljurs WindowsPostinstall v0.28" -ForegroundColor yellow
 
 If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
     Write-Host "You didn't run this script as an Administrator. This script will self elevate to run as an Administrator and continue."
@@ -315,7 +315,7 @@ else
 }
 
 # Uninstall Onedrive
-cmd -c C:\windows\SysWOW64\OneDriveSetup.exe /uninstall
+C:\windows\SysWOW64\OneDriveSetup.exe /uninstall
 reg add "HKLM\Software\Wow6432Node\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /t REG_DWORD /d "1" /f
 reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "DisableUAR" /t REG_DWORD /d "1" /f
 reg add "HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /v "System.IsPinnedToNameSpaceTree" /t REG_DWORD /d "0" /f
