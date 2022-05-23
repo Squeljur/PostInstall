@@ -122,7 +122,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /v "Disabl
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /v "DisableSensors" /t REG_DWORD /d "1" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /v "DisableWindowsLocationProvider" /t REG_DWORD /d "1" /f
 
-
+# Uninstall Edge
 [String] $ProgramX86 = "$env:SystemDrive\Program Files (x86)"
 [String] $edgepath = "$ProgramX86\Microsoft\Edge\Application\*.*.*.*\Installer"
 [String] $arguments = "--uninstall --system-level --verbose-logging --force-uninstall"
@@ -178,4 +178,3 @@ else
     Write-Host "Microsoft Edge " -NoNewline -ForegroundColor Cyan
     Write-Host "is not even installed?"
 }
-})
