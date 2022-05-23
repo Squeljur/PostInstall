@@ -253,7 +253,22 @@ else
     Write-Host "is not even installed?"
 }
 
-
+# Uninstall Onedrive
+cmd -c C:\windows\SysWOW64\OneDriveSetup.exe /uninstall
+reg add "HKLM\Software\Wow6432Node\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "DisableUAR" /t REG_DWORD /d "1" /f
+reg add "HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /v "System.IsPinnedToNameSpaceTree" /t REG_DWORD /d "0" /f
+reg add "HKCR\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /v "System.IsPinnedToNameSpaceTree" /t REG_DWORD /d "0" /f
+Get-ChildItem -Path "$env:localappdata\Microsoft\OneDrive" -Force | ForEach-Object{
+    Remove-Item -Path $_.FullName -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+}
+Get-ChildItem -Path "$env:programdata\Microsoft OneDrive" -Force | ForEach-Object{
+    Remove-Item -Path $_.FullName -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+}
+Get-ChildItem -Path "$env:systemdrive\OneDriveTemp" -Force | ForEach-Object{
+    Remove-Item -Path $_.FullName -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+}
+Disable-ScheduledTask -TaskName "OneDrive*" -ErrorAction SilentlyContinue
 
 # Preinstalled apps
 Get-AppxPackage -Name "Microsoft.MicrosoftEdge" | Remove-AppxPackage -ErrorAction SilentlyContinue
