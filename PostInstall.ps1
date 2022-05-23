@@ -1,3 +1,5 @@
+Write-Host "Squeljurs WindowsPostinstall v0.13" -ForegroundColor yellow
+
 # Make sure to have admin permissions
 param([switch]$Elevated)
 
@@ -34,14 +36,12 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "E
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization" /v "NoLockScreen" /t REG_DWORD /d "1" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d "1" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t REG_DWORD /d "0" /f
-#Get-Service -Name "Wsearch" | Stop-Service | Set-Service -StartupType Disabled
-
-
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "ClearPageFileAtShutDown" /t REG_DWORD /d "0" /f
 
 # Update
-#Disable-ScheduledTask -TaskName "\Microsoft\Windows\WindowsUpdate\Scheduled Start" -ErrorAction SilentlyContinue
-#reg add "HKLM\Software\Microsoft\WindowsUpdate\UX\Settings" /v "UxOption" /t REG_DWord /d "1" /f
-#Get-Service -Name "wuauserv" | Stop-Service | Set-Service -StartupType Disabled
+Disable-ScheduledTask -TaskName "\Microsoft\Windows\WindowsUpdate\Scheduled Start" -ErrorAction SilentlyContinue
+reg add "HKLM\Software\Microsoft\WindowsUpdate\UX\Settings" /v "UxOption" /t REG_DWord /d "1" /f
+Get-Service -Name "wuauserv" | Stop-Service | Set-Service -StartupType Disabled
 
 # Telemetry
 Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" -ErrorAction SilentlyContinue
