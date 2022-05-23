@@ -49,6 +49,8 @@ reg delete "HKCR\Folder\ShellEx\ContextMenuHandlers\Library Location" /f
 reg delete "HKCR\*\shellex\ContextMenuHandlers\Sharing" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackDocs" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Dsh" /v "AllowNewsAndInterests" /t REG_DWORD /d "0" /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
+reg add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /d REG_DWORD /t "0" /f
 
 # use XTS-AES 256-bit instead of XTS-AES 128-bit (bitlocker)
 reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "EncryptionMethodWithXtsOs" /t REG_DWORD /d "7" /f
