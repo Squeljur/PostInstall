@@ -310,5 +310,17 @@ Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "microsoft.w
 Get-AppxPackage -Name "Microsoft.Windows.PeopleExperienceHost" | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "Microsoft.Windows.PeopleExperienceHost" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
 
+# change powerconfig
+powercfg -duplicatescheme "e9a42b02-d5df-448d-aa00-03f14749eb61" "24c4656d-f3b4-4d09-b3e5-6245c6e6bdb4"
+powercfg -setactive "24c4656d-f3b4-4d09-b3e5-6245c6e6bdb4"
+
 Write-Host "Script finished, you may exit the PowerShell Windows now." -ForegroundColor yellow
 Write-Host "You might have to restart your PC for some changes to take effect." -ForegroundColor gray
+
+$UserInput = Read-Host "Do you want to reboot? (y/n)"
+If ($UserInput -eq "y") {
+    Write-Host "Rebooting..."
+    shutdown /r /t 30
+} Else {
+    Write-Host "Not rebooting, exiting..."
+}
