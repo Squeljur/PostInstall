@@ -1,8 +1,6 @@
-Write-Host "Squeljurs WindowsPostinstall v0.13" -ForegroundColor yellow
+Write-Host "Squeljurs WindowsPostinstall v0.14" -ForegroundColor yellow
 
 # Make sure to have admin permissions
-param([switch]$Elevated)
-
 function Test-Admin {
     $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
     $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
@@ -291,3 +289,6 @@ Get-AppxPackage -Name "microsoft.windowscommunicationsapps" | Remove-AppxPackage
 Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "microsoft.windowscommunicationsapps" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
 Get-AppxPackage -Name "Microsoft.Windows.PeopleExperienceHost" | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "Microsoft.Windows.PeopleExperienceHost" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+
+Write-Host "Script finished, you may exit the PowerShell Windows now." -ForegroundColor yellow
+Write-Host "You might have to restart your PC for some changes to take effect." -ForegroundColor gray
