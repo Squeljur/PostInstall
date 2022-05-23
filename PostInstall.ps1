@@ -10,7 +10,11 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes" /v "SystemUsesLi
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "AppsUseLightTheme" /t REG_DWord /d "0" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "SystemUsesLightTheme" /t REG_DWord /d "0" /f
 
+# Old context menu
+reg add "HKCU\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /t REG_DWORD /d "0" /f
+ 
 # Windows Search & Cortana
+reg add "HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableSearchBoxSuggestions" /t REG_DWORD /d "1" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "DisableWebSearch" /t REG_DWORD /d "1" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWeb" /t REG_DWORD /d "0" /f
@@ -26,6 +30,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "CortanaEnabl
 # Update
 Disable-ScheduledTask -TaskName "\Microsoft\Windows\WindowsUpdate\Scheduled Start" -ErrorAction SilentlyContinue
 reg add "HKLM\Software\Microsoft\WindowsUpdate\UX\Settings" /v "UxOption" /t REG_DWord /d "1" /f
+Get-Service -Name "wuauserv" | Stop-Service | Set-Service -StartupType Disabled
 
 # Telemetry
 Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" -ErrorAction SilentlyContinue
@@ -39,7 +44,6 @@ Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClient" -Erro
 Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" -ErrorAction SilentlyContinue
 Disable-ScheduledTask -TaskName "Microsoft\Windows\Clip\LicenseValidation" -ErrorAction SilentlyContinue
 
-Get-Service -Name "wuauserv" | Stop-Service | Set-Service -StartupType Disabled
 Get-Service -Name "DiagTrack" | Stop-Service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
 Get-Service -Name "diagnosticshub.standardcollector.service" | Stop-Service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
 Get-Service -Name "lfsvc" | Stop-Service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
