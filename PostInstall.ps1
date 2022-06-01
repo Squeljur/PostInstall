@@ -1,4 +1,4 @@
-Write-Host "Squeljurs WindowsPostinstall v0.28" -ForegroundColor yellow
+Write-Host "Squeljurs WindowsPostinstall v0.29" -ForegroundColor yellow
 
 If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
     Write-Host "You didn't run this script as an Administrator. This script will self elevate to run as an Administrator and continue."
@@ -197,6 +197,8 @@ reg add "HKLM\System\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "AutoShareWks" /t REG_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration" /v "Status" /t REG_DWORD /d "0" /f
 
+# Security fixes
+reg delete "HKCR\ms-msdt" /f
 
 # Preinstalled apps
 Get-AppxPackage -Name "Microsoft.549981C3F5F10_8wekyb3d8bbwe" | Remove-AppxPackage -ErrorAction SilentlyContinue
