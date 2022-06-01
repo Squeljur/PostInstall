@@ -281,3 +281,5 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration]
 "Status"=dword:00000000
+
+[-HKEY_CLASSES_ROOT\ms-msdt]
