@@ -1,5 +1,5 @@
 # Postinstall
-A powershell script to remove telemetry and other bloatware on Windows (11) (also fixes this [1](https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2022-30190), [2](https://msrc-blog.microsoft.com/2022/05/30/guidance-for-cve-2022-30190-microsoft-support-diagnostic-tool-vulnerability/) Microsoft Office vulnerability), as well as making a few other tweaks such as disabling the new context menu. 
+A powershell script to remove telemetry and other bloatware on Windows (11) (also fixes this ([1](https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2022-30190), [2](https://msrc-blog.microsoft.com/2022/05/30/guidance-for-cve-2022-30190-microsoft-support-diagnostic-tool-vulnerability/)) Microsoft Office vulnerability), as well as making a few other tweaks such as disabling the new context menu. 
 
 **This script is tested on multiple computers and a VM, all running Windows 11 Pro or Home. Use at own risk**
 
