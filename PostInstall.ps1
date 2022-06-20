@@ -92,7 +92,7 @@ Get-Service -Name "WpcMonSvc" | Stop-Service | Set-Service -StartupType Disabled
 Get-Service -Name "XblAuthManager" | Stop-Service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
 Get-Service -Name "XblGameSave" | Stop-Service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
 Get-Service -Name "XboxNetApiSvc" | Stop-Service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
-Get-Service -Name "XboxNetApiSvc" | Stop-Service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
+Get-Service -Name "DoSvc" | Stop-Service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
 
 reg add "HKCU\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut" /t REG_DWORD /d "1" /f
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection" /t REG_DWORD /d "1" /f
@@ -187,6 +187,10 @@ reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Error Reporting" /v "D
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWeb" /t REG_DWORD /d "0" /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchPrivacy" /t REG_DWORD /d "0" /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWebOverMeteredConnections" /t REG_DWORD /d "0" /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "DeviceHistoryEnabled" /t REG_DWORD /d "0" /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "HistoryViewEnabled" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "DisableWebSearch" /t REG_DWORD /d "1" /f
 reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /d "0" /t REG_DWORD /f
 reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "MaxTelemetryAllowed" /d "0" /t REG_DWORD /f
