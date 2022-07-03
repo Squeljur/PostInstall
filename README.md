@@ -1,3 +1,33 @@
+# GIVE UP GITHUB
+I've decided to migrate all of my repo's (including private) to CodeBerg. This repo can be found at https://codeberg.org/Squeljur/PostInstall. **NO FURTHER UPDATES WILL BE ADDED HERE**.
+
+
+Note: we encourage you to add the below to your existing `README.md` on your GitHub project.
+
+== We're Using GitHub Under Protest ==
+
+This project is currently hosted on GitHub.  This is not ideal; GitHub is a
+proprietary, trade-secret system that is not Free and Open Souce Software
+(FOSS).  We are deeply concerned about using a proprietary system like GitHub
+to develop our FOSS project.  We have an
+[open {bug ticket, mailing list thread, etc.} ](INSERT_LINK) where the
+project contributors are actively discussing how we can move away from GitHub
+in the long term.  We urge you to read about the
+[Give up GitHub](https://GiveUpGitHub.org) campaign from
+[the Software Freedom Conservancy](https://sfconservancy.org) to understand
+some of the reasons why GitHub is not a good place to host FOSS projects.
+
+If you are a contributor who personally has already quit using GitHub, please
+[check this resource](INSERT_LINK) for how to send us contributions without
+using GitHub directly.
+
+Any use of this project's code by GitHub Copilot, past or present, is done
+without our permission.  We do not consent to GitHub's use of this project's
+code in Copilot.
+
+![Logo of the GiveUpGitHub campaign](https://sfconservancy.org/img/GiveUpGitHub.png)
+
+
 # Postinstall
 A powershell script to remove telemetry and other bloatware on Windows (11) (also fixes this ([1](https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2022-30190), [2](https://msrc-blog.microsoft.com/2022/05/30/guidance-for-cve-2022-30190-microsoft-support-diagnostic-tool-vulnerability/)) Microsoft Office vulnerability), as well as making a few other tweaks such as disabling the new context menu. 
 
